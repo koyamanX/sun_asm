@@ -5,4 +5,10 @@
  make all
 * how to use <br>
  ./sunasm < sample.s | tee sample.bin
+
+* add support for directive
+ ex.)
+ .segment text 
+ .byte
+ .word
  
