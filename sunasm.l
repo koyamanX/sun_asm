@@ -31,6 +31,42 @@ $pc|$PC|pc|PC {
 text {
 	return TEXT;
 }
+bss {
+	return BSS;
+}
+data {
+	return DATA;
+}
+sdata {
+	return SDATA;
+}
+const {
+	return CONST;
+}
+word {
+	return WORD;
+}
+half {
+	return HALF;
+}
+byte {
+	return BYTE;
+}
+space {
+	return SPACE;
+}
+align {
+	return ALIGN;	
+}
+extern {
+	return EXTERN;
+}
+lcomm {
+	return LCOMM;
+}
+comm {
+	return COMM;
+}
 segment {
 	return SEGMENT;
 }

@@ -19,6 +19,7 @@ symtab_t *sym;
 inst_t imem[IMEM_MAX];
 symstat stat;
 uint32_t adrs;
+uint32_t cseg;
 
 
 %}
@@ -33,7 +34,8 @@ uint32_t adrs;
 %token <ival> INST INST_U
 %token <ival> ITYPE_LS ITYPE_LS_U
 %token <ival> BTYPE BTYPE_RET NOP CMP
-%token <ival> TEXT SEGMENT
+%token <ival> TEXT BSS DATA SDATA CONST WORD HALF BYTE SPACE ALIGN EXTERN 
+%token <ival> LCOMM COMM SEGMENT
 %token <symp> LABEL
 %token <ival> RTYPE ITYPE ITYPE_U BTYPE_REG ITYPE_CMP 
 %token <ival> ITYPE_LS_S ITYPE_LS_US ITYPE_LS_A ITYPE_LS_UA ITYPE_LS_SA ITYPE_LS_USA
@@ -66,6 +68,20 @@ stmt:
 	| '.' SEGMENT TEXT '\n'
 		{
 			printf("text field\n");
+		}
+	| '.' ALIGN  INTEGER '\n'
+		{
+			switch($2)
+			{
+				case 1:
+				case 2:
+				case 4:
+					cseg = $2;	
+					break;
+				default:
+					yyerror("alignment is not supported");
+					break;
+			}
 		}
 	|
 	;
