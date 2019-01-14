@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 #define SYMTAB_MAX 20
-#define IMEM_MAX 512
+#define IMEM_MAX 8192
 
 typedef struct 
 {

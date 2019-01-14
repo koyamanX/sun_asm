@@ -16,7 +16,7 @@ uint32_t line = 0;
 uint32_t pc = 0;
 symtab_t *symtab;
 symtab_t *sym;
-inst_t imem[IMEM_MAX];
+inst_t *imem;
 symstat stat;
 uint32_t adrs;
 uint32_t cseg;
@@ -182,6 +182,7 @@ expr:
 void init(void)
 {
 	symtab = init_symtab();	
+	imem = malloc(sizeof(inst_t) * IMEM_MAX * 128);
 }
 
 inst_t *newnode(type_t nodetype, uint32_t fnum, ...)
